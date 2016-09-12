@@ -14,10 +14,10 @@
             <h:form id="login-form" prependId="false">
                 <h:panelGrid columns="5">
                     <h:outputLabel value="Username" for="username"/>
-                    <h:inputText id="username" value="#{loginBean.user.username}"/>
+                    <h:inputText id="username" value="#{loginBeanCDI.user.username}"/>
                     <h:outputLabel value="Password" for="pwd"/>
-                    <h:inputSecret id="pwd" value="#{loginBean.user.password}"/>
-                    <h:commandButton value="Login" id="combtn" action="#{loginBean.goToWelcome()}"/>
+                    <h:inputSecret id="pwd" value="#{loginBeanCDI.user.password}"/>
+                    <h:commandButton value="Login" id="combtn" action="#{loginBeanCDI.login()}"/>
                 </h:panelGrid>
             </h:form>
             

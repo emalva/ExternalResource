@@ -10,5 +10,42 @@
             <var>bundle</var>
         </resource-bundle>
     </application>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBeanCDI.login()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/pages/welcome</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{loginBeanCDI.login()}</from-action>
+            <from-outcome>fail</from-outcome>
+            <to-view-id>/pages/fail</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/pages/welcome.xhtml</from-view-id>
+        <navigation-case>
+            <if>#{clasifBean.age le 11}</if>
+            <from-outcome>go</from-outcome>
+            <to-view-id>/pages/age/kid</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <if>#{clasifBean.age gt 11 and clasifBean.age lt 40}</if>
+            <from-outcome>go</from-outcome>
+            <to-view-id>/pages/age/teen</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <if>#{clasifBean.age ge 40}</if>
+            <from-outcome>go</from-outcome>
+            <to-view-id>/pages/age/old</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 
 </faces-config>
